@@ -1,4 +1,4 @@
-from typing import Optional, Literal
+from typing import Literal
 
 from connectors_sdk import (
     BaseConfigModel,
@@ -8,7 +8,6 @@ from connectors_sdk import (
 )
 from pydantic import (
     Field,
-    HttpUrl,
     SecretStr,
 )
 
@@ -18,6 +17,7 @@ class StreamConnectorConfig(BaseStreamConnectorConfig):
     Override the `BaseStreamConnectorConfig` to add parameters and/or defaults
     to the configuration for connectors of type `STREAM`.
     """
+
     name: str = Field(
         description="The name of the connector.",
         default="TAXII POST",

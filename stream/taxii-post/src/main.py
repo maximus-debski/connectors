@@ -1,6 +1,7 @@
 import traceback
 
 from pycti import OpenCTIConnectorHelper
+
 from taxii_post_connector import TaxiiPostConnector
 from taxii_post_connector.settings import ConnectorSettings
 

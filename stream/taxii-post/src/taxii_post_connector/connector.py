@@ -1,12 +1,11 @@
 import json
 import re
-import sys
-import time
 import uuid
 from typing import Tuple
 
 import requests
 from pycti import OpenCTIConnectorHelper
+
 from taxii_post_connector.settings import ConnectorSettings
 
 
@@ -66,7 +65,10 @@ class TaxiiPostConnector:
         try:
             data_object = data
             data_object["spec_version"] = self.config.stix_version
-            if self.config.delete_marking_definition and "object_marking_refs" in data_object:
+            if (
+                self.config.delete_marking_definition
+                and "object_marking_refs" in data_object
+            ):
                 del data_object["object_marking_refs"]
             if self.config.delete_created_by_ref and "created_by_ref" in data_object:
                 del data_object["created_by_ref"]
@@ -95,7 +97,9 @@ class TaxiiPostConnector:
             if self.config.token is not None:
                 self.helper.log_info("Posting to TAXII URL (using token): " + url)
                 self.helper.log_info(str(bundle))
-                headers["Authorization"] = "Bearer " + self.config.token.get_secret_value()
+                headers["Authorization"] = (
+                    "Bearer " + self.config.token.get_secret_value()
+                )
                 response = requests.post(
                     url,
                     headers=headers,
@@ -109,7 +113,14 @@ class TaxiiPostConnector:
                 response = requests.post(
                     url,
                     headers=headers,
-                    auth=(self.config.login, self.config.password.get_secret_value() if self.config.password else None),
+                    auth=(
+                        self.config.login,
+                        (
+                            self.config.password.get_secret_value()
+                            if self.config.password
+                            else None
+                        ),
+                    ),
                     json=bundle,
                     verify=self.config.ssl_verify,
                 )
