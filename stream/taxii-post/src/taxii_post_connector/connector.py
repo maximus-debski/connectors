@@ -2,10 +2,9 @@ import json
 import re
 import uuid
 from typing import Tuple
-
 import requests
-from pycti import OpenCTIConnectorHelper
 
+from pycti import OpenCTIConnectorHelper
 from taxii_post_connector.settings import ConnectorSettings
 
 
