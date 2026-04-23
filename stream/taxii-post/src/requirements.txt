@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-pycti==7.260422.0
-=======
 pycti==7.260417.0
-=======
-pycti==7.260401.0
->>>>>>> f660a43ab (Updated requirements)
-=======
-pycti==7.260417.0
->>>>>>> bcea7cfce (Updated pycti version in requirements)
 pydantic >=2.8.2, <3
 connectors-sdk @ git+https://github.com/OpenCTI-Platform/connectors.git@master#subdirectory=connectors-sdk
->>>>>>> 708d13f0b (Added optional parameters for created_by_ref and object_marking_refs removal and implemented ConnectorSettings)
